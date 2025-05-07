@@ -5849,7 +5849,7 @@ body:not(.has-plugin-html5video) .video-wrap video {
 	top: 0;
 	left: 0;
 	z-index: 5;
-	background: transparent url('images/grid.png') repeat;
+	background: transparent url('/assets/images/grid.png') repeat;
 	transform: translateZ(0);
 	-webkit-backface-visibility: hidden;
 }
@@ -6557,7 +6557,7 @@ body:not(.has-plugin-html5video) .video-wrap video {
 -----------------------------------------------------------------*/
 
 .page-title-pattern {
-	background-image: url('images/pattern.png');
+	background-image: url('/assets/images/pattern.png');
 	background-repeat: repeat;
 	background-attachment: fixed;
 }
@@ -6583,7 +6583,7 @@ body:not(.has-plugin-html5video) .video-wrap video {
 
 .page-title-parallax {
 	background-color: transparent;
-	background-image: url('images/parallax/parallax-bg.jpg');
+	background-image: url('/assets/images/parallax/parallax-bg.jpg');
 	background-attachment: fixed;
 	background-position: 50% 0;
 	background-repeat: no-repeat;
