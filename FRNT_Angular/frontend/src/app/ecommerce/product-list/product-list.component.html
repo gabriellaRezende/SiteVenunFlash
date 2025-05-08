@@ -1,10 +1,43 @@
 <section id="content">
+
+  <div class="search-bar">
+    <input [(ngModel)]="filter" placeholder="Buscar produto...">
+    <button (click)="search()" type="submit">Buscar</button>
+  </div>
+
     <div class="content-wrap">
       <div class="container clearfix">
 
         <!-- Shop
-        ============================================= -->
+        =============================================
+        
+        
+        <div class="row">
+          <div *ngFor="let p of products" class="col-lg-3 col-md-4 col-sm-6">
+            <div class="grid-inner">
+              <h4>{{ p.name }}</h4>
+              <p>{{ p.description }}</p>
+              <a [routerLink]="['/product-single']">Ver detalhes</a>
+            </div>
+          </div>
+        </div> -->
+        
+        
+        
+        
+
         <div id="shop" class="shop row grid-container gutter-30" data-layout="fitRows">
+
+
+          <div class="row">
+            <div *ngFor="let p of products" class="col-lg-3 col-md-4 col-sm-6">
+              <div class="grid-inner">
+                <h4>{{ p.name }}</h4>
+                <p>{{ p.description }}</p>
+                <a [routerLink]="['/product-single']">Ver detalhes</a>
+              </div>
+            </div>
+          </div>
 
           <div class="product col-lg-3 col-md-4 col-sm-6 col-12">
             <div class="grid-inner">

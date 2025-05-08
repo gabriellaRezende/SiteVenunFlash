@@ -6,9 +6,18 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:4200"}})
 
 users = []
 products = [
-    {"id": 1, "name": "Artigo A", "description": "Descrição A"},
-    {"id": 2, "name": "Artigo B", "description": "Descrição B"},
-]
+    {"id": 1, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 2, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 3, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 4, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 5, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 6, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 7, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 8, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 9, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 10, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 11, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
+    {"id": 12, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},]
 
 @app.route('/api/register', methods=['POST'])
 def register():
