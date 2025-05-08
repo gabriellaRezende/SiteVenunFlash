@@ -13,23 +13,26 @@
 
                                     <h3>Login to your Account</h3>
 
-                                    <div *ngIf="errorMessage" class="text-danger" style="padding: 4px;">{{ errorMessage }}</div>
+                                    <div *ngIf="submitted && loginForm.invalid" class="alert alert-danger">
+                                        Todos os campos são obrigatórios.
+                                      </div>
+        
+                                    <div *ngIf="errorMessage" class="alert alert-danger" style="padding: 4px;">{{ errorMessage }}</div>
 
                                     <div class="row">
                                         <div class="col-12 form-group">
-                                            <label for="login-form-username">Username:</label>
-                                            <input formControlName="username" class="form-control" placeholder="Username">
+                                            <label for="login-form-username">User*</label>
+                                            <input formControlName="username" class="form-control">
                                         </div>
 
                                         <div class="col-12 form-group">
-                                            <label for="login-form-password">Password:</label>
-                                            <input formControlName="password" type="password" class="form-control" placeholder="Password">
+                                            <label for="login-form-password">Password*</label>
+                                            <input formControlName="password" type="password" class="form-control" >
                                         </div>
 
                                         <div class="col-12 form-group">
                                             <button class="button button-3d button-black m-0" id="login-form-submit"
                                                 name="login-form-submit" value="login">Login</button>
-                                            <a href="#" class="float-end">Forgot Password?</a>
                                         </div>
                                     </div>
 

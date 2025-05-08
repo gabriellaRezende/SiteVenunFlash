@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  submitted = false;
   errorMessage = '';
 
   constructor(
@@ -30,6 +31,13 @@ export class LoginComponent {
   }
 
   onSubmit() { 
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
+      this.errorMessage = '';
+      return;
+    }
+
     if (this.loginForm.invalid) return;
     this.errorMessage = '';
     this.authService.login(this.loginForm.value).subscribe({

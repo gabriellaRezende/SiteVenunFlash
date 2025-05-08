@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  submitted = false;
   errorMessage = '';
   successMessage = '';
 
@@ -34,19 +35,18 @@ export class RegisterComponent {
   }
 
   onSubmit() {
+    this.submitted = true;
 
-    console.log('onSubmit chamado!', this.registerForm.valid, this.registerForm.value);
-  if (this.registerForm.invalid) {
-    console.warn('Formulário inválido:', this.registerForm.errors);
-    return;
-  }
+    if (this.registerForm.invalid) {
+      this.errorMessage = '';
+      return;
+    }
 
-
-
-    if (this.registerForm.invalid) return;
+    this.errorMessage = '';
+    this.successMessage = '';
     this.authService.register(this.registerForm.value).subscribe({
       next: () => {
-        this.successMessage = 'Registado com Sucesso! Faça seu Login';
+        this.successMessage = 'Registado com Sucesso! Você será redirecionado.';
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 2000);

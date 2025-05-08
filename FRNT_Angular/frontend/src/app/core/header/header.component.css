@@ -1,0 +1,7 @@
+.user-menu {
+    top: 100%;
+    right: 0;
+    min-width: 120px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }

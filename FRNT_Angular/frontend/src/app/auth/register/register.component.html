@@ -9,35 +9,39 @@
                     <div class="tab-content" id="tab-register">
                         <div class="card mb-0">
                             <div class="card-body" style="padding: 40px;">
-                                <h3>Register for an Account</h3>
+                                <h3>Registar sua Conta</h3>
 
-                                <div *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</div>
-                                <div *ngIf="successMessage" class="text-success">{{ successMessage }}</div>
+                                <div *ngIf="submitted && registerForm.invalid" class="alert alert-danger">
+                                    Todos os campos são obrigatórios.
+                                  </div>
+
+                                <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+                                <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
 
                                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mb-0">
 
                                     <div class="col-12 form-group">
-                                        <label for="register-form-name">Nome:</label>
+                                        <label for="register-form-name">Nome*</label>
                                         <input formControlName="name" class="form-control" />
                                     </div>
 
                                     <div class="col-12 form-group">
-                                        <label for="register-form-email">Email:</label>
+                                        <label for="register-form-email">Email*</label>
                                         <input formControlName="email" class="form-control" />
                                     </div>
 
                                     <div class="col-12 form-group">
-                                        <label for="register-form-username">User:</label>
+                                        <label for="register-form-username">User*</label>
                                         <input formControlName="username" class="form-control" />
                                     </div>
 
                                     <div class="col-12 form-group">
-                                        <label for="register-form-phone">Telemóvel:</label>
+                                        <label for="register-form-phone">Telemóvel*</label>
                                         <input formControlName="phone" class="form-control" />
                                     </div>
 
                                     <div class="col-12 form-group">
-                                        <label for="register-form-password">Senha:</label>
+                                        <label for="register-form-password">Senha*</label>
                                         <input formControlName="password" type="password" class="form-control" />
                                     </div>
 
