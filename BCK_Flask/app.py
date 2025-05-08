@@ -2,10 +2,10 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:4200"}})
 
 users = []
-articles = [
+products = [
     {"id": 1, "name": "Artigo A", "description": "Descrição A"},
     {"id": 2, "name": "Artigo B", "description": "Descrição B"},
 ]
@@ -25,13 +25,13 @@ def login():
         return jsonify({"message": "Login ok"}), 200
     return jsonify({"error": "Credenciais inválidas"}), 401
 
-@app.route('/api/articles', methods=['GET'])
-def list_articles():
+@app.route('/api/products', methods=['GET'])
+def list_products():
     name = request.args.get('name')
     if name:
-        filtered = [a for a in articles if name.lower() in a['name'].lower()]
+        filtered = [a for a in products if name.lower() in a['name'].lower()]
         return jsonify(filtered)
-    return jsonify(articles)
+    return jsonify(products)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=True)
