@@ -9,15 +9,20 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
-    RouterLink
+    FormsModule
   ],
   templateUrl: './product-single.component.html',
   styleUrl: './product-single.component.css'
 })
 export class ProductSingleComponent implements OnInit {
   product: Product | null = null;
-  ps: any;
+  loading: boolean = false;
+  error: string = '';
+  quantity: number = 1;
+decrease: any;
+increase: any;
+addToCart: any;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -25,8 +30,18 @@ export class ProductSingleComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.ps.getById(id).subscribe((data: Product) => this.product = data);
-  }
+   const id = Number(this.route.snapshot.paramMap.get('id'));
+   this.productService.getById(id).subscribe({
+     next: (data: Product) => {
+       this.product = data;
+       this.loading = false;
+     }
+     , error: (err: any) => {
+       this.error = 'Erro ao carregar produto';
+       this.loading = false;
+     }
 
+    });
+
+}
 }

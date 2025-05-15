@@ -20,6 +20,7 @@ imageFront: any;
 })
 export class ProductService {
     private base = `${environment.apiUrl}/products`; // API URL do environment
+  getById: any;
 
     constructor(private http: HttpClient) {}
 

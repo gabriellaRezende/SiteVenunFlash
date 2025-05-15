@@ -1,23 +1,20 @@
 <section id="content">
-
-    <div class="content-wrap">
-      <div class="container clearfix">
-
-        <!-- Shop
-        ============================================= -->
-        
-
-        <div id="shop" class="shop row grid-container gutter-30" data-layout="fitRows">
-  <div class="search-bar mb-4">
-    <input [(ngModel)]="filter" placeholder="Buscar produto..." class="form-control me-2" style="margin-bottom: 10px ;"/>
-    <button (click)="search()" class="btn btn-primary me-2" style="background-color: #19BC9B; border-color: #19BC9B;">Buscar</button>
-    <button (click)="loadAll()" class="btn btn-secondary">Limpar</button>
-  </div>
-
   <div class="content-wrap">
     <div class="container clearfix">
 
-      <div id="shop" class="shop row grid-container gutter-30" *ngIf="products.length">
+      <!-- Barra de busca -->
+      <div class="search-bar mb-4">
+        <input [(ngModel)]="filter" placeholder="Buscar produto..." class="form-control me-2 mb-2" />
+        <button (click)="search()" class="btn btn-primary me-2" style="background-color: #19BC9B; border-color: #19BC9B;">
+          Buscar
+        </button>
+        <button (click)="loadAll()" class="btn btn-secondary">
+          Limpar
+        </button>
+      </div>
+
+      <!-- Lista de produtos -->
+      <div id="shop" class="shop row grid-container gutter-30" *ngIf="products.length > 0">
         <div *ngFor="let p of products" class="product col-lg-3 col-md-4 col-sm-6 col-12">
           <div class="grid-inner">
 
@@ -34,11 +31,7 @@
               </div>
 
               <div class="bg-overlay">
-                <div
-                  class="bg-overlay-content align-items-end justify-content-between"
-                  data-hover-animate="fadeIn"
-                  data-hover-speed="400"
-                >
+                <div class="bg-overlay-content align-items-end justify-content-between" data-hover-animate="fadeIn" data-hover-speed="400">
                   <a href="#" class="btn btn-dark me-2"><i class="icon-shopping-basket"></i></a>
                   <a href="#" class="btn btn-dark"><i class="icon-line-expand"></i></a>
                 </div>
@@ -53,8 +46,7 @@
                 </h3>
               </div>
               <div class="product-price">
-                <p>{{ p.Price | number:'1.2-2' }}</p>
-                <ins>R$ {{ p.price   | number:'1.2-2' }}</ins>
+                <ins>R$ {{ p.price | number:'1.2-2' }}</ins>
               </div>
             </div>
 
@@ -62,16 +54,11 @@
         </div>
       </div>
 
+      <!-- Nenhum produto encontrado -->
       <div *ngIf="products.length === 0" class="alert alert-info">
         Nenhum produto encontrado.
       </div>
 
     </div>
   </div>
-
-
-        </div><!-- #shop end -->
-
-      </div>
-    </div>
-  </section>
+</section>

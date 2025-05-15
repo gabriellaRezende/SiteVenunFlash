@@ -8,5 +8,10 @@ export const routes: Routes = [
     {path: '', component: ProductListComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'product/:id', component: ProductSingleComponent},
-];
+{
+    path: 'product/:id',
+    loadComponent: () =>
+      import('./ecommerce/product-single/product-single.component').then(
+        (m) => m.ProductSingleComponent
+      ),
+  },];
