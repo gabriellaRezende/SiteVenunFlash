@@ -5,6 +5,11 @@ import { Observable } from "rxjs";
 
 
 export interface Product {
+Price: string|number;
+imageBack: any;
+inStock: any;
+price: string|number;
+imageFront: any;
     id: number;
     name: string;
     description: string;

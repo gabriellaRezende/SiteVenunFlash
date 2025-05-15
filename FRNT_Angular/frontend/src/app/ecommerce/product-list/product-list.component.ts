@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product, ProductService } from '../../services/product.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import {  RouterLink } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -10,7 +10,7 @@ import {  RouterLink } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    RouterLink
+    RouterModule,
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'

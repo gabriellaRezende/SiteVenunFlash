@@ -8,12 +8,57 @@ users = []
 products = [
     {
         "id": 1,
-        "name": "Produto 1",
-        "description": "Descrição do Produto 1",
-        "price": 10.0,
-        "imageFront": "https://localhost:5001/static/produto1.jpg",
-        "imageBack": "https://localhost:5001/static/produto1_back.jpg",
+        "name": "Checked Short Dress",
+        "description": "Incrivel vestido para se usar em um dia enslo",
+        "price": 24.99,
+        "imageFront": "http://localhost:5001/static/DressFront1.jpg",
+        "imageBack": "http://localhost:5001/static/DressBack1.jpg",
         "inStock": True,
+    },
+    {
+        "id": 2,
+        "name": "Slim Fit Chinos",
+        "description": "Claça masculina elegante para o dia a dia",
+        "price": 39.99,
+        "imageFront": "http://localhost:5001/static/PantsFront.jpg",
+        "imageBack": "http://localhost:5001/static/PantsBack.jpg",
+        "inStock": True,
+    },
+    {
+        "id": 3,
+        "name": "Blue Round-Neck Tshirt",
+        "description": "Tshirt de algodão com estampa",
+        "price": 9.99,
+        "imageFront": "http://localhost:5001/static/TshirtsFront.jpg",
+        "imageBack": "http://localhost:5001/static/TshirtsBack.jpg",
+        "inStock": False,
+    },
+    {
+        "id": 4,
+        "name": "Dark Brown Boots",
+        "description": "Bota de couro marrom escuro",
+        "price": 49,
+        "imageFront": "http://localhost:5001/static/ShoesFront.jpg",
+        "imageBack": "http://localhost:5001/static/ShoesBack.jpg",
+        "inStock": False,
+    },
+    {
+        "id": 5,
+        "name": "Unisex Sunglasses",
+        "description": "Óculos de sol unissex",
+        "price": 11.99,
+        "imageFront": "http://localhost:5001/static/SunglassesFront.jpg",
+        "imageBack": "http://localhost:5001/static/SunglassesBack.jpg",
+        "inStock": True,
+    },
+    {
+        "id": 6,
+        "name": "Blue Round-Neck Tshirt",
+        "description": "Incrivel vestido para se usar em um dia enslo",
+        "price": 9.99,
+        "imageFront": "http://localhost:5001/static/DressFront2.jpg",
+        "imageBack": "http://localhost:5001/static/DressBack2.jpg",
+        "inStock": False,
     }
 ]
 
@@ -48,12 +93,12 @@ def add_product():
     new_id = max((p['id'] for p in products), default=0) + 1
     product = {
         "id": new_id,
-        "name": data.get['name'],
-        "description": data.get['description'],
-        "price": data.get['price'],
-        "imageFront": data.get['imageFront'],
-        "imageBack": data.get['imageBack'],
-        "inStock": data.get['inStock', True],
+        "name": data.get('name'),
+        "description": data.get('description'),
+        "price": data.get('price'),
+        "imageFront": data.get('frontImage'),
+        "imageBack": data.get('backImage'),
+        "inStock": data.get('inStock', True),
     }
     products.append(product)
     return jsonify({"message": "Produto adicionado com sucesso"}), 201
