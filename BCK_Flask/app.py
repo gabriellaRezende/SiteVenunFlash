@@ -6,18 +6,16 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:4200"}})
 
 users = []
 products = [
-    {"id": 1, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 2, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 3, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 4, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 5, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 6, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 7, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 8, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 9, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 10, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 11, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},
-    {"id": 12, "name": "Artigo A", "description": "Descrição A", "price": 10.0, "imageFront": "http://localhost:5001/static/img/1.jpg", "imageBack": "http://localhost:5001/static/img/2.jpg"},]
+    {
+        "id": 1,
+        "name": "Produto 1",
+        "description": "Descrição do Produto 1",
+        "price": 10.0,
+        "imageFront": "https://localhost:5001/static/produto1.jpg",
+        "imageBack": "https://localhost:5001/static/produto1_back.jpg",
+        "inStock": True,
+    }
+]
 
 @app.route('/api/register', methods=['POST'])
 def register():
@@ -36,11 +34,29 @@ def login():
 
 @app.route('/api/products', methods=['GET'])
 def list_products():
+    #filtro por nome
     name = request.args.get('name')
     if name:
         filtered = [a for a in products if name.lower() in a['name'].lower()]
         return jsonify(filtered)
     return jsonify(products)
+
+@app.route('/api/products', methods=['POST'])
+def add_product():
+    data = request.json
+    # gera novo id para o produto
+    new_id = max((p['id'] for p in products), default=0) + 1
+    product = {
+        "id": new_id,
+        "name": data.get['name'],
+        "description": data.get['description'],
+        "price": data.get['price'],
+        "imageFront": data.get['imageFront'],
+        "imageBack": data.get['imageBack'],
+        "inStock": data.get['inStock', True],
+    }
+    products.append(product)
+    return jsonify({"message": "Produto adicionado com sucesso"}), 201
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5001, debug=True)
